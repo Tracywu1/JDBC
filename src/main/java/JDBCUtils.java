@@ -1,10 +1,11 @@
-package com.jdbc;
-
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
+/**
+ * @author 32119
+ */
 public class JDBCUtils {
     private static String driver = null;
     private static String url = null;
@@ -14,7 +15,7 @@ public class JDBCUtils {
 
     static {
         try {
-            InputStream in = new FileInputStream("D:\\code\\jdbc\\src\\com\\db.properties");
+            InputStream in = new FileInputStream("D:\\code\\JDBC\\src\\main\\resources\\db.properties");
             Properties propertise = new Properties();
             propertise.load(in);
 

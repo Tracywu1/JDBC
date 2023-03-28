@@ -1,5 +1,8 @@
-package com.pojo;
+package com.cc.pojo;
 
+/**
+ * @author 32119
+ */
 public class Account {
     private int id;
     private String username;

@@ -1,5 +1,3 @@
-package com.jdbc;
-
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +6,9 @@ import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author 32119
+ */
 public class CRUDUtils {
 
     /**
@@ -17,7 +18,7 @@ public class CRUDUtils {
      * @param params 占位符的值
      * @return update 更新数据的条数
      */
-    public static int update(String sql, Object... params) throws Exception {
+    public static int update(String sql, Object... params) {
         //获取连接
         Connection conn = null;
         PreparedStatement psmt = null;
@@ -50,7 +51,7 @@ public class CRUDUtils {
      * @param clazz  查询的结果需要封装的实体类
      * @param params 占位符的值
      * @param <T>    具体操作的实体类
-     * @return返回特定的泛型
+     * @return 返回特定的泛型
      */
     public static <T> T query(String sql, Class<T> clazz, Object... params) {
         //获取连接
@@ -76,7 +77,8 @@ public class CRUDUtils {
             int count = rsmd.getColumnCount();
             //处理结果集
             while (rs.next()) {
-                T t = clazz.newInstance();//要求这个Javabean类型必须有无参构造
+                //要求这个Javabean类型必须有无参构造
+                T t = clazz.newInstance();
                 //循环每一行有几列
                 for (int i = 0; i < count; i++) {
                     //第几列的名称
@@ -85,7 +87,8 @@ public class CRUDUtils {
                     //该列的值
                     Object value = rs.getObject(fieldName);
                     //设置obj对象的某个属性中
-                    Field field = clazz.getDeclaredField(fieldName);//获取成员变量
+                    //获取成员变量
+                    Field field = clazz.getDeclaredField(fieldName);
                     field.setAccessible(true);
                     field.set(t, value);
                 }

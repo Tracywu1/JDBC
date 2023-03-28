@@ -1,11 +1,15 @@
-package com.cc.test;
+import com.cc.pojo.Account;
+import org.junit.jupiter.api.Test;
 
-import com.pojo.Account;
-import org.junit.Test;
 
 import java.util.List;
 
-public class AccountTest {
+
+/**
+ * @author 32119
+ */
+public class AccountDemo {
+
     @Test
     public void testQuery() {
         try {
@@ -38,11 +42,11 @@ public class AccountTest {
         }
     }
 
-    @Test
+   @Test
     public void testDelete() {
         try {
             String sql = "delete from account where id = ?";
-            int update = CRUDUtils.update(sql, 3);
+            int update = CRUDUtils.update(sql, 9);
             System.out.println(update);
         } catch (Exception e) {
             e.printStackTrace();
